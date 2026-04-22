@@ -1,0 +1,73 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@theme {
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-serif: "Georgia", "Times New Roman", serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  --color-noir-950: #0A0A0B;
+  --color-noir-900: #141417;
+  --color-noir-800: #1A1A1D;
+  --color-noir-700: #2D3748;
+  --color-noir-600: #1A202C;
+  --color-noir-400: #94A3B8;
+  --color-noir-200: #E2E8F0;
+  --color-noir-50: #FFFFFF;
+
+  --color-detective-red: #C53030;
+  --color-detective-gold: #CBD5E0;
+
+  --animate-typewriter: typewriter 2s steps(40) forwards;
+  --animate-fade-in-up: fadeInUp 0.5s ease-out forwards;
+}
+
+@keyframes typewriter {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+body {
+  @apply bg-noir-950 text-noir-200 font-sans selection:bg-detective-red selection:text-white;
+}
+
+.narrative-text {
+  @apply font-serif leading-[1.8] text-[19px] text-[#CBD5E0];
+}
+
+.mono-label {
+  @apply font-mono text-[10px] uppercase tracking-[1px] text-noir-400;
+}
+
+/* Glass effect for evidence cards */
+.evidence-glass {
+  @apply bg-noir-800 border border-noir-700 shadow-xl rounded-lg;
+}
+
+.status-chip {
+  @apply inline-flex items-center gap-1.5 text-[10px] uppercase tracking-[1px] text-detective-red border border-detective-red px-2 py-1 rounded;
+}
+
+/* Subtle grain texture */
+.grain-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
